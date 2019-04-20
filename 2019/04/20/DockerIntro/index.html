@@ -396,17 +396,15 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。<br>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
-<p>###Docker与虚拟机<br>Docker守护进程可以直接与主操作系统进行通信，为各个Docker容器分配资源；它还可以将容器与主操作系统隔离，并将各个容器互相隔离。虚拟机启动需要数分钟，而Docker容器可以在数毫秒内启动。由于没有臃肿的从操作系统，Docker可以节省大量的磁盘空间以及其他系统资源。<br>两者有不同的使用场景。虚拟机更擅长于彻底隔离整个运行环境。例如，云服务提供商通常采用虚拟机技术隔离不同的用户。而Docker通常用于隔离不同的应用，例如前端，后端以及数据库。</p>
-<p>###Docker架构<br><img src="http://www.techug.com/wordpress/wp-content/uploads/2017/05/docker.jpg" alt="图片"><br>相比于虚拟机，從主操作系统(Host Operating System)-&gt;虚拟机管理系统(Hypervisor)-&gt;从操作系统(Guest Operating System)換成主操作系统(Host Operating System)-&gt;Docker守护进程(Docker Daemon)， Docker要简洁很多。因为我们不需要运行一个多一层从操作系统了。</p>
-<p>###Docker的应用场景</p>
-<ul>
+<h3 id="Docker与虚拟机"><a href="#Docker与虚拟机" class="headerlink" title="Docker与虚拟机"></a>Docker与虚拟机</h3><p>Docker守护进程可以直接与主操作系统进行通信，为各个Docker容器分配资源；它还可以将容器与主操作系统隔离，并将各个容器互相隔离。虚拟机启动需要数分钟，而Docker容器可以在数毫秒内启动。由于没有臃肿的从操作系统，Docker可以节省大量的磁盘空间以及其他系统资源。<br>两者有不同的使用场景。虚拟机更擅长于彻底隔离整个运行环境。例如，云服务提供商通常采用虚拟机技术隔离不同的用户。而Docker通常用于隔离不同的应用，例如前端，后端以及数据库。</p>
+<h3 id="Docker架构"><a href="#Docker架构" class="headerlink" title="Docker架构"></a>Docker架构</h3><p><img src="http://www.techug.com/wordpress/wp-content/uploads/2017/05/docker.jpg" alt="图片"><br>相比于虚拟机，從主操作系统(Host Operating System)-&gt;虚拟机管理系统(Hypervisor)-&gt;从操作系统(Guest Operating System)換成主操作系统(Host Operating System)-&gt;Docker守护进程(Docker Daemon)， Docker要简洁很多。因为我们不需要运行一个多一层从操作系统了。</p>
+<h3 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h3><ul>
 <li>Web 应用的自动化打包和发布。</li>
 <li>自动化测试和持续集成、发布。</li>
 <li>在服务型环境中部署和调整数据库或其他的后台应用。</li>
 <li>从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境。</li>
 </ul>
-<p>###Docker的优点</p>
-<ul>
+<h3 id="Docker的优点"><a href="#Docker的优点" class="headerlink" title="Docker的优点"></a>Docker的优点</h3><ul>
 <li><p>1、简化程序：</p>
 <blockquote>
 <p>Docker 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的    任务，在Docker容器的处理下，只需要数秒就能完成。</p>
@@ -424,7 +422,7 @@ height:50vh;
 </li>
 </ul>
 <p>###Docker原理<br>Docker核心解决的问题是利用LXC来实现类似VM的功能，从而利用更加节省的硬件资源提供给用户更多的计算资源。同VM的方式不同, LXC其并不是一套硬件虚拟化方法 - 无法归属到全虚拟化、部分虚拟化和半虚拟化中的任意一个，而是一个操作系统级虚拟化方法, 理解起来可能并不像VM那样直观。所以我们从虚拟化到docker要解决的问题出发，看看他是怎么满足用户虚拟化需求的。</p>
-<p>###Docker局限<br>Docker并不是全能的，设计之初也不是KVM之类虚拟化手段的替代品，简单总结几点：</p>
+<h3 id="Docker局限"><a href="#Docker局限" class="headerlink" title="Docker局限"></a>Docker局限</h3><p>Docker并不是全能的，设计之初也不是KVM之类虚拟化手段的替代品，简单总结几点：</p>
 <ol>
 <li>Docker是基于Linux 64bit的，无法在32bit的linux/Windows/unix环境下使用</li>
 <li>LXC是基于cgroup等linux kernel功能的，因此container的guest系统只能是linux base的</li>
@@ -434,7 +432,8 @@ height:50vh;
 <li>Docker对disk的管理比较有限</li>
 <li>container随着用户进程的停止而销毁，container中的log等用户数据不便收集</li>
 </ol>
-<p>####官方地址<br><a href="https://www.docker.com" target="_blank" rel="noopener">Docker Website</a></p>
+<h3 id="官方地址"><a href="#官方地址" class="headerlink" title="官方地址"></a>官方地址</h3><p><a href="https://www.docker.com" target="_blank" rel="noopener">Docker Website</a></p>
+<h3 id="Docker教程"><a href="#Docker教程" class="headerlink" title="Docker教程"></a>Docker教程</h3><p><a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">Runoob Website</a></p>
 
     </article>
     <!-- license  -->
@@ -443,7 +442,7 @@ height:50vh;
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
             </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">https://wonderingkaho.github.io/2019/04/20/DockerIntro/</a>
             </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">April 20th 2019, 8:12:03 pm</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">April 20th 2019, 8:57:40 pm</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">April 20th 2019, 9:03:17 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -575,7 +574,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker与虚拟机"><span class="toc-number">1.</span> <span class="toc-text">Docker与虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker架构"><span class="toc-number">2.</span> <span class="toc-text">Docker架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的应用场景"><span class="toc-number">3.</span> <span class="toc-text">Docker的应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的优点"><span class="toc-number">4.</span> <span class="toc-text">Docker的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker局限"><span class="toc-number">5.</span> <span class="toc-text">Docker局限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#官方地址"><span class="toc-number">6.</span> <span class="toc-text">官方地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker教程"><span class="toc-number">7.</span> <span class="toc-text">Docker教程</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
