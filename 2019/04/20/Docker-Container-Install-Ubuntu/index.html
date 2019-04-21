@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Docker Intro · Wonderingkaho&#39;s Studio</title>
+    <title>Docker Container Install Ubuntu · Wonderingkaho&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">Wonderingkaho&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Docker Intro</a>
+                <a href="#" class="post-name">Docker Container Install Ubuntu</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Docker Intro
+            Docker Container Install Ubuntu
             <!-- 404 -->
             
         </h1>
@@ -264,9 +264,17 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Ubuntu">Ubuntu</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">255</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -395,65 +403,41 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。<br>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
-<h2 id="Docker与虚拟机"><a href="#Docker与虚拟机" class="headerlink" title="Docker与虚拟机"></a>Docker与虚拟机</h2><p>Docker守护进程可以直接与主操作系统进行通信，为各个Docker容器分配资源；它还可以将容器与主操作系统隔离，并将各个容器互相隔离。虚拟机启动需要数分钟，而Docker容器可以在数毫秒内启动。由于没有臃肿的从操作系统，Docker可以节省大量的磁盘空间以及其他系统资源。<br>两者有不同的使用场景。虚拟机更擅长于彻底隔离整个运行环境。例如，云服务提供商通常采用虚拟机技术隔离不同的用户。而Docker通常用于隔离不同的应用，例如前端，后端以及数据库。</p>
-<h2 id="Docker架构"><a href="#Docker架构" class="headerlink" title="Docker架构"></a>Docker架构</h2><p><img src="http://www.techug.com/wordpress/wp-content/uploads/2017/05/docker.jpg" alt="图片"><br>相比于虚拟机，從主操作系统(Host Operating System)-&gt;虚拟机管理系统(Hypervisor)-&gt;从操作系统(Guest Operating System)換成主操作系统(Host Operating System)-&gt;Docker守护进程(Docker Daemon)， Docker要简洁很多。因为我们不需要运行一个多一层从操作系统了。</p>
-<h2 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h2><ul>
-<li><p>Web 应用的自动化打包和发布。</p>
+        <h2 id="先确保Docker正在运行"><a href="#先确保Docker正在运行" class="headerlink" title="先确保Docker正在运行"></a>先确保Docker正在运行</h2><p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD844551399/Screenshot%202019-04-20%20at%209.21.37%20PM.png" alt="图片"></p>
+<h2 id="安装Ubuntu系统命令"><a href="#安装Ubuntu系统命令" class="headerlink" title="安装Ubuntu系统命令"></a>安装Ubuntu系统命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br></pre></td></tr></table></figure>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD990984794/Screenshot%202019-04-20%20at%209.31.42%20PM.png" alt="图片"></p>
+<h2 id="运行进入Ubuntu系统命令"><a href="#运行进入Ubuntu系统命令" class="headerlink" title="运行进入Ubuntu系统命令"></a>运行进入Ubuntu系统命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti ubuntu bash</span><br></pre></td></tr></table></figure>
+<p>就这样进入了系统</p>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD958970423/Screenshot%202019-04-20%20at%209.38.40%20PM.png" alt="图片"></p>
+<p>查看Ubuntu版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD776709050/Screenshot%202019-04-20%20at%209.46.02%20PM.png" alt="图片"></p>
+<p>Docker 默认安装的是极度精简的Ubuntu，连最基本的wget命令都没有，所以先要apt-get update升级系统和安装apt-get install wget命令</p>
+<h2 id="Ubuntu下运行此命令"><a href="#Ubuntu下运行此命令" class="headerlink" title="Ubuntu下运行此命令"></a>Ubuntu下运行此命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br></pre></td></tr></table></figure>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD742145026/Screenshot%202019-04-20%20at%209.42.31%20PM.png" alt="图片"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install wget</span><br></pre></td></tr></table></figure>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD716564716/Screenshot%202019-04-20%20at%209.43.36%20PM.png" alt="图片"></p>
+<h2 id="共享宿主机目录到Ubuntu系统中"><a href="#共享宿主机目录到Ubuntu系统中" class="headerlink" title="共享宿主机目录到Ubuntu系统中"></a>共享宿主机目录到Ubuntu系统中</h2><p>先退出當前系統<br>先按，ctrl+p<br>再按，ctrl+q<br>如使用exit或者ctrl+d来退出，会把整个系统都退出。</p>
+<ul>
+<li><p>挂载目录后镜像内就可以共享宿主机里的文件</p>
 </li>
-<li><p>自动化测试和持续集成、发布。</p>
-</li>
-<li><p>在服务型环境中部署和调整数据库或其他的后台应用。</p>
-</li>
-<li><p>从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境。</p>
-</li>
-</ul>
-<h2 id="Docker的优点"><a href="#Docker的优点" class="headerlink" title="Docker的优点"></a>Docker的优点</h2><ul>
-<li><p>1、简化程序：</p>
-<blockquote>
-<p>Docker 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的    任务，在Docker容器的处理下，只需要数秒就能完成。</p>
-</blockquote>
-</li>
-<li><p>2、避免选择恐惧症：</p>
-<blockquote>
-<p>如果你有选择恐惧症，还是资深患者。Docker 帮你    打包你的纠结！比如 Docker 镜像；Docker 镜像中包含了运行环境和配置，所以 Docker 可以简化部署多种应用实例工作。比如 Web 应用、后台应用、数据库应用、大数据应用比如 Hadoop 集群、消息队列等等都可以打包成一个镜像部署。</p>
-</blockquote>
-</li>
-<li><p>3、节省开支：</p>
-<blockquote>
-<p>一方面，云计算时代到来，使开发者不必为了追求效果而配置高额的硬件，Docker 改变了高性能必然高价格的思维定势。Docker 与云的结合，让云空间得到更充分的利用。不仅解决了硬件管理的问题，也改变了虚拟化的方式。</p>
-</blockquote>
+<li><p>通过 run -v 参数指定挂载目录(格式：宿主机目录:镜像内挂载目录)，如果宿主机目录不存在则创建</p>
 </li>
 </ul>
-<h2 id="Docker原理"><a href="#Docker原理" class="headerlink" title="Docker原理"></a>Docker原理</h2><p>Docker核心解决的问题是利用LXC来实现类似VM的功能，从而利用更加节省的硬件资源提供给用户更多的计算资源。同VM的方式不同, LXC其并不是一套硬件虚拟化方法 - 无法归属到全虚拟化、部分虚拟化和半虚拟化中的任意一个，而是一个操作系统级虚拟化方法, 理解起来可能并不像VM那样直观。所以我们从虚拟化到docker要解决的问题出发，看看他是怎么满足用户虚拟化需求的。</p>
-<h2 id="Docker局限"><a href="#Docker局限" class="headerlink" title="Docker局限"></a>Docker局限</h2><p>Docker并不是全能的，设计之初也不是KVM之类虚拟化手段的替代品，简单总结几点：</p>
-<ol>
-<li><p>Docker是基于Linux 64bit的，无法在32bit的linux/Windows/unix环境下使用</p>
-</li>
-<li><p>LXC是基于cgroup等linux kernel功能的，因此container的guest系统只能是linux base的</p>
-</li>
-<li><p>隔离性相比KVM之类的虚拟化方案还是有些欠缺，所有container公用一部分的运行库</p>
-</li>
-<li><p>网络管理相对简单，主要是基于namespace隔离</p>
-</li>
-<li><p>cgroup的cpu和cpuset提供的cpu功能相比KVM的等虚拟化方案相比难以度量(所以dotcloud主要是按内存收费)</p>
-</li>
-<li><p>Docker对disk的管理比较有限</p>
-</li>
-<li><p>container随着用户进程的停止而销毁，container中的log等用户数据不便收集</p>
-</li>
-</ol>
-<h2 id="官方地址"><a href="#官方地址" class="headerlink" title="官方地址"></a>官方地址</h2><p><a href="https://www.docker.com" target="_blank" rel="noopener">Docker Website</a></p>
-<h2 id="Docker教程"><a href="#Docker教程" class="headerlink" title="Docker教程"></a>Docker教程</h2><p><a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">Runoob Website</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /Users/Wonderingkaho/Desktop/secure/bomb8:/home ubuntu bash</span><br></pre></td></tr></table></figure>
+<p>格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /AAA:/BBB ubuntu bash</span><br></pre></td></tr></table></figure>
+<p><img src="https://a14d4b9d0801a8f7a4e1a9be27386565b.asuscomm.com/AICLOUD676525346/Screenshot%202019-04-20%20at%209.52.06%20PM.png" alt="图片"></p>
+<p>此时可看到容器里 /home 文件夹下多出了 /Users/Wonderingkaho/Desktop/secure/bomb8 目录的内容</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
-            </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">https://wonderingkaho.github.io/2019/04/20/DockerIntro/</a>
-            </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">April 20th 2019, 8:12:03 pm</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/20/DockerIntro/">April 20th 2019, 9:07:39 pm</a>
+            </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/20/Docker-Container-Install-Ubuntu/">https://wonderingkaho.github.io/2019/04/20/Docker-Container-Install-Ubuntu/</a>
+            </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/20/Docker-Container-Install-Ubuntu/">April 20th 2019, 9:15:49 pm</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/20/Docker-Container-Install-Ubuntu/">April 21st 2019, 2:56:37 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -462,12 +446,17 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2019/04/20/Docker-Container-Install-Ubuntu/" title="Docker Container Install Ubuntu">
-                    <div class="nextTitle">Docker Container Install Ubuntu</div>
+                <a href="/2019/04/21/Docker-Common-Command/" title="Docker Common Command">
+                    <div class="nextTitle">Docker Common Command</div>
                 </a>
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/04/20/DockerIntro/" title="Docker Intro">
+                    <div class="prevTitle">Docker Intro</div>
+                </a>
             
         </li>
     </ul>
@@ -585,7 +574,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker与虚拟机"><span class="toc-number">1.</span> <span class="toc-text">Docker与虚拟机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker架构"><span class="toc-number">2.</span> <span class="toc-text">Docker架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的应用场景"><span class="toc-number">3.</span> <span class="toc-text">Docker的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker的优点"><span class="toc-number">4.</span> <span class="toc-text">Docker的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker原理"><span class="toc-number">5.</span> <span class="toc-text">Docker原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker局限"><span class="toc-number">6.</span> <span class="toc-text">Docker局限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#官方地址"><span class="toc-number">7.</span> <span class="toc-text">官方地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker教程"><span class="toc-number">8.</span> <span class="toc-text">Docker教程</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#先确保Docker正在运行"><span class="toc-number">1.</span> <span class="toc-text">先确保Docker正在运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Ubuntu系统命令"><span class="toc-number">2.</span> <span class="toc-text">安装Ubuntu系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行进入Ubuntu系统命令"><span class="toc-number">3.</span> <span class="toc-text">运行进入Ubuntu系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu下运行此命令"><span class="toc-number">4.</span> <span class="toc-text">Ubuntu下运行此命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共享宿主机目录到Ubuntu系统中"><span class="toc-number">5.</span> <span class="toc-text">共享宿主机目录到Ubuntu系统中</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

@@ -428,6 +428,51 @@ AUTOMATED
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/04/20/Docker-Container-Install-Ubuntu/">
+            
+                <span>Docker Container Install Ubuntu</span>
+        </a>
+        <div class="abstract-content">
+            先确保Docker正在运行
+安装Ubuntu系统命令1docker pull ubuntu
+
+运行进入Ubuntu系统命令1docker run -ti ubuntu bash
+就这样进入了系统
+
+查看Ubuntu版本
+1cat /etc/issue
+
+Docker 默认安装的是极度精简的Ubuntu，连最基本的wget命令都没有，所以先要apt-get update升级系统和安装apt-get install wget命令
+Ubuntu下运行此命令1apt-get update
+
+1apt-get install wget
+
+共享宿主机目录到Ubuntu系统中先退出當前系統先按，ctr...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/20</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Ubuntu">Ubuntu</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/04/20/DockerIntro/">
             
                 <span>Docker Intro</span>
@@ -658,9 +703,18 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 3
         </div>
         <!-- search  -->
         
@@ -681,6 +735,11 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/20</span><a class="archive-post-title" href="/2019/04/20/Docker-Container-Install-Ubuntu/">Docker Container Install Ubuntu</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/20</span><a class="archive-post-title" href="/2019/04/20/DockerIntro/">Docker Intro</a>
         </li>
     
@@ -688,6 +747,10 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Docker"><span class="iconfont-archer">&#xe606;</span>Docker</span>
+    
+        <span class="sidebar-tag-name" data-tags="Ubuntu"><span class="iconfont-archer">&#xe606;</span>Ubuntu</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
