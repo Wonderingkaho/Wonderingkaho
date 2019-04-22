@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Wonderingkaho&#39;s Blog</title>
+    <title>CI/CD Concept · Wonderingkaho&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -201,14 +203,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Wonderingkaho&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">CI/CD Concept</a>
+            </div>
+    </div>
     
     <a class="home-link" href="/">Wonderingkaho's Blog.</a>
 </header>
@@ -227,7 +238,7 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-img" style="background-image: url(https://source.unsplash.com/random/1600x900)"></div>
@@ -236,8 +247,8 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Wonderingkaho's Blog.
-            <!-- 文章页  -->
+            CI/CD Concept
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -245,12 +256,43 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                No Pain No Gain
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">471</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/04/22</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -351,272 +393,75 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/22/CI-CD-Concept/">
-            
-                <span>CI/CD Concept</span>
-        </a>
-        <div class="abstract-content">
-            CI(Continuous Integration, 持续集成)多人开发共同合作的时候，经常性的将个人的工作（代码）合并集成到一起。每次的集成，都由“自动构建”并执行相应测试，进行快速验证。简而言之，经常性的同步彼此的工作，尽可能保证整个软件项目随时是完整可用的。一般包括的流程：集成、构建、测试。
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="CI-Continuous-Integration-持续集成"><a href="#CI-Continuous-Integration-持续集成" class="headerlink" title="CI(Continuous Integration, 持续集成)"></a>CI(Continuous Integration, 持续集成)</h2><p>多人开发共同合作的时候，经常性的将个人的工作（代码）合并集成到一起。<strong>每次的集成，都由“自动构建”并执行相应测试，进行快速验证</strong>。简而言之，经常性的同步彼此的工作，尽可能保证整个软件项目随时是完整可用的。<br>一般包括的流程：集成、构建、测试。</p>
+<blockquote>
+<p>Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.</p>
+</blockquote>
+<h2 id="CD-Continuous-Delivery-持续交付"><a href="#CD-Continuous-Delivery-持续交付" class="headerlink" title="CD(Continuous Delivery, 持续交付)"></a>CD(Continuous Delivery, 持续交付)</h2><p>持续的执行发布流程到一个类产品环境里，以保证随时能够发布到产品环境。CD是在CI的基础上（集成、构建、测试），并执行最终发布时候所需要的流程。<strong>可以说CI是自动化的保证代码可用，而CD是自动化的保证发布流程是可用的</strong>。</p>
+<h2 id="另一种CD-Continuous-Deployment-持续部署"><a href="#另一种CD-Continuous-Deployment-持续部署" class="headerlink" title="另一种CD(Continuous Deployment, 持续部署)"></a>另一种CD(Continuous Deployment, 持续部署)</h2><p>自动地，从代码更改，持续的部署到产品环境里。Continuous Delivery与Continuous Deployment不同的是，<strong>Continuous Delivery 只是拥有能自动发布到产品环境的能力，而Continuous Deployment，则是直接就部署到产品环境里了</strong>。因此，发布的环境一般为类产品环境。至于最终要不要发布到产品环境，取决于商业考量等因素。</p>
+<blockquote>
+<p>Continuous Delivery is sometimes confused with Continuous Deployment. Continuous Deployment means that every change goes through the pipeline and automatically gets put into production, resulting in many production deployments every day. Continuous Delivery just means that you are able to do frequent deployments but may choose not to do it, usually due to businesses preferring a slower rate of deployment. In order to do Continuous Deployment you must be doing Continuous Delivery.</p>
+</blockquote>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://martinfowler.com/articles/continuousIntegration.html" target="_blank" rel="noopener">https://martinfowler.com/articles/continuousIntegration.html</a><br><a href="https://martinfowler.com/bliki/ContinuousDelivery.html" target="_blank" rel="noopener">https://martinfowler.com/bliki/ContinuousDelivery.html</a></p>
 
-Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates ...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/22</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/21/Docker-Container-Install-Ubuntu/">
-            
-                <span>Docker Container Install Ubuntu</span>
-        </a>
-        <div class="abstract-content">
-            先确保Docker正在运行
-安装Ubuntu系统命令1docker pull ubuntu
-
-运行进入Ubuntu系统命令1docker run -ti ubuntu bash
-就这样进入了系统
-
-查看Ubuntu版本
-1cat /etc/issue
-
-Docker 默认安装的是极度精简的Ubuntu，连最基本的wget命令都没有，所以先要apt-get update升级系统和安装apt-get install wget命令
-Ubuntu下运行此命令1apt-get update
-
-1apt-get install wget
-
-共享宿主机目录到Ubuntu系统中先退出当前系统先按，ctr...
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
+            </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/</a>
+            </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">April 22nd 2019, 10:28:23 am</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">April 22nd 2019, 10:29:35 am</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Docker">Docker</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Ubuntu">Ubuntu</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/21/Docker-Common-Command/">
-            
-                <span>Docker Common Command</span>
-        </a>
-        <div class="abstract-content">
-            先随便找一个Docker镜像，然后拉镜像，拉完镜像就可以docker run了
-Docker 镜像常用命令
-搜索镜像：
-
-1docker search ubuntu
-docker search 命令搜索存放在 Docker Hub 中的镜像，显示的信息包括:
-
-
-
-属性头
-描述
-
-
-
-
-NAME
-镜像仓库名称
-
-
-DESCRIPTION
-镜像仓库描述
-
-
-STARS
-镜像仓库收藏数
-
-
-OFFICAL
-是否官方库
-
-
-AUTOMATED
-是否自动构建的镜像仓库
-
-
-
-
-
-下载镜像：
-
-1docker pull ubuntu
-
-列出镜像：
-
-1docker images ls
-
-显示的信息...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/20/DockerIntro/">
-            
-                <span>Docker Intro</span>
-        </a>
-        <div class="abstract-content">
-            Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。
-Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信，为各个Docker容器分配资源；它还可以将容器与主操作系统隔离，并将各个容器互相隔离。虚拟机启动需要数分钟，而Docker容器可以在数毫秒内启动。由于没有臃肿的从操作系统，Dock...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
-    
-</main>
-            <!-- profile -->
+    <ul class="post-paginator">
+        <li class="next">
             
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/avatar/Photo.jpg">
-    <div class="profile-name">Wonderingkaho</div>
-    
-    <div class="profile-signature">
-        witness me
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/04/21/Docker-Container-Install-Ubuntu/" title="Docker Container Install Ubuntu">
+                    <div class="prevTitle">Docker Container Install Ubuntu</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80Mzg0Ny8yMDM4Mg==">
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
     </div>
+
+<!-- City版安装代码已完成 -->
     
     
-    <div class="profile-social">
-        
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
     
-        
-            
-                <a href="mailto:431021806@qq.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/Wonderingkaho" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/IMG_8914.jpg">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
     
 
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href="//www.baidu.com" target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href="//www.google.com" target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href="/about">ABOUT ME</a>
-        </div>
-    
-</div>
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
             
         </div>
         <footer class="footer footer-unloaded">
@@ -699,6 +544,24 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-Continuous-Integration-持续集成"><span class="toc-number">1.</span> <span class="toc-text">CI(Continuous Integration, 持续集成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CD-Continuous-Delivery-持续交付"><span class="toc-number">2.</span> <span class="toc-text">CD(Continuous Delivery, 持续交付)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#另一种CD-Continuous-Deployment-持续部署"><span class="toc-number">3.</span> <span class="toc-text">另一种CD(Continuous Deployment, 持续部署)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -852,6 +715,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
