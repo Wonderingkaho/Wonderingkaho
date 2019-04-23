@@ -346,6 +346,41 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/04/23/Kubernetes-Concept/">
+            
+                <span>Kubernetes Concept</span>
+        </a>
+        <div class="abstract-content">
+            Kubernetes总体架构Master和Node
+Kubernetes主要由以下几个核心组件组成：
+
+etcd
+保存了整个集群的状态，用于持久化存储集群中所有的资源对象，如Node、Service、Pod、RC、Namespace等；
+
+
+API Server
+提供了资源操作的唯一入口，操作etcd的封装接口API，并提供认证、授权、访问控制、API注册和发现等机制；
+
+
+Controller Manager
+集群内部的管理控制中心，其主要目的是实现Kubernetes集群的故障检测和恢复的自动化工作，比如根据RC的定义完成Pod的复制或移除，以确保Pod实例数符合RC副本的定义；根据...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/23</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/04/22/CI-CD-Concept/">
             
                 <span>CI/CD Concept</span>
@@ -632,9 +667,22 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 4
+        Total : 5
         </div>
         <!-- search  -->
         
@@ -647,6 +695,11 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/23</span><a class="archive-post-title" href="/2019/04/23/Kubernetes-Concept/">Kubernetes Concept</a>
+        </li>
     
     
         <li class="archive-post-item">
