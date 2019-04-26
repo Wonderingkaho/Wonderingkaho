@@ -400,7 +400,7 @@ height:50vh;
 <h2 id="集群动力学"><a href="#集群动力学" class="headerlink" title="集群动力学"></a>集群动力学</h2><p>由于Kubernetes（更通用的说法是分布式系统）天生具有不断变化的特性，因此它的Pod（以及Pod的IP）总是在改变。变化的原因可以是针对不可预测的Pod或节点崩溃而进行的滚动升级和扩展。这使得Pod IP不能直接用于通信。</p>
 <p>我们看一下Kubernetes Service，它是一个虚拟IP，并伴随着一组Pod IP作为Endpoint（通过标签选择器识别）。它们充当虚拟负载均衡器，其IP保持不变，而后端Pod IP可能会不断变化。</p>
 <p><img src="http://dockone.io/uploads/article/20181218/49b016c98c39a365446a5af3963fbd1e.png" alt="图片"></p>
-<p><strong><em>Kubernetes Srvice对象的标签选择器</em></strong></p>
+<p><strong><em>Kubernetes Service对象的标签选择器</em></strong></p>
 <p>整个虚拟IP的实现实际上是一组iptables（最新版本可以选择使用IPVS，但这是另一个讨论）规则，由Kubernetes组件kube-proxy管理。 这个名字现在实际上是误导性的。 它在v 1.0之前确实是一个代理，并且由于其实现是内核空间和用户空间之间的不断复制，它变得非常耗费资源并且速度较慢。 现在，它只是一个控制器，就像Kubernetes中的许多其它控制器一样，它watch api server的endpoint的更改并相应地更新iptables规则。</p>
 <p>有了这些iptables规则，每当数据包发往Service IP时，它就进行DNAT（DNAT=目标网络地址转换）操作，这意味着目标IP从Service IP更改为其中一个Endpoint - Pod IP - 由iptables随机选择。这可确保负载均匀分布在后端Pod中。</p>
 <p><img src="http://dockone.io/uploads/article/20181218/79811160b699c5e3a52ef21f63ea9d08.png" alt="图片"></p>
@@ -428,7 +428,7 @@ height:50vh;
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
             </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/26/图解Kubernetes网络（三）/">https://wonderingkaho.github.io/2019/04/26/图解Kubernetes网络（三）/</a>
             </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/26/图解Kubernetes网络（三）/">April 26th 2019, 2:49:31 pm</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/26/图解Kubernetes网络（三）/">April 26th 2019, 2:53:05 pm</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/26/图解Kubernetes网络（三）/">April 26th 2019, 3:53:26 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -588,6 +588,12 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
