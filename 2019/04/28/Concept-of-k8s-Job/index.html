@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>CI/CD Concept · Wonderingkaho&#39;s Blog</title>
+    <title>Concept of k8s Job · Wonderingkaho&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/">Wonderingkaho&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">CI/CD Concept</a>
+                <a href="#" class="post-name">Concept of k8s Job</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            CI/CD Concept
+            Concept of k8s Job
             <!-- 404 -->
             
         </h1>
@@ -266,12 +266,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">471</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1.4k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/04/22</span>
+                    <span class="post-intro-time">2019/04/28</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,25 +395,72 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="CI-Continuous-Integration-持续集成"><a href="#CI-Continuous-Integration-持续集成" class="headerlink" title="CI(Continuous Integration, 持续集成)"></a>CI(Continuous Integration, 持续集成)</h2><p>多人开发共同合作的时候，经常性的将个人的工作（代码）合并集成到一起。<strong>每次的集成，都由“自动构建”并执行相应测试，进行快速验证</strong>。简而言之，经常性的同步彼此的工作，尽可能保证整个软件项目随时是完整可用的。<br>一般包括的流程：集成、构建、测试。</p>
-<blockquote>
-<p>Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.</p>
+        <blockquote>
+<p>学习本节内容之前，希望你已经对Pod和ReplicaSet有了基本的了解。具体请参考这两篇文章：</p>
 </blockquote>
-<h2 id="CD-Continuous-Delivery-持续交付"><a href="#CD-Continuous-Delivery-持续交付" class="headerlink" title="CD(Continuous Delivery, 持续交付)"></a>CD(Continuous Delivery, 持续交付)</h2><p>持续的执行发布流程到一个类产品环境里，以保证随时能够发布到产品环境。CD是在CI的基础上（集成、构建、测试），并执行最终发布时候所需要的流程。<strong>可以说CI是自动化的保证代码可用，而CD是自动化的保证发布流程是可用的</strong>。</p>
-<h2 id="另一种CD-Continuous-Deployment-持续部署"><a href="#另一种CD-Continuous-Deployment-持续部署" class="headerlink" title="另一种CD(Continuous Deployment, 持续部署)"></a>另一种CD(Continuous Deployment, 持续部署)</h2><p>自动地，从代码更改，持续的部署到产品环境里。Continuous Delivery与Continuous Deployment不同的是，<strong>Continuous Delivery 只是拥有能自动发布到产品环境的能力，而Continuous Deployment，则是直接就部署到产品环境里了</strong>。因此，发布的环境一般为类产品环境。至于最终要不要发布到产品环境，取决于商业考量等因素。</p>
+<ul>
+<li><p>Kubernetes对象之Pod</p>
+</li>
+<li><p>Kubernetes对象之ReplicaSet</p>
+</li>
+</ul>
+<p><strong>Job对象通常用于运行那些仅需要执行一次的任务（例如数据库迁移，批处理脚本等等）</strong>。通过Job对象创建运行的Pod具有高可靠性，因为Job Controller会自动重启运行失败的Pod（例如Pod所在Node重启或宕机）。</p>
+<p>Job的本质是确保一个或多个Pod健康地运行直至运行完毕。</p>
+<h2 id="创建一个Job对象"><a href="#创建一个Job对象" class="headerlink" title="创建一个Job对象"></a>创建一个Job对象</h2><p>下面是创建一个Job对象的例子，这个Job对象会启动一个Pod，用于计算π到小数点后2000位：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: batch/v1</span><br><span class="line">kind: Job</span><br><span class="line">metadata:</span><br><span class="line">  name: pi</span><br><span class="line">spec:</span><br><span class="line">  template:</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: pi</span><br><span class="line">        image: perl</span><br><span class="line">        command: [&quot;perl&quot;,  &quot;-Mbignum=bpi&quot;, &quot;-wle&quot;, &quot;print bpi(2000)&quot;]</span><br><span class="line">      restartPolicy: Never</span><br><span class="line">  backoffLimit: 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f ./job.yaml</span><br><span class="line">job &quot;pi&quot; created</span><br></pre></td></tr></table></figure>
+<p>运行describe命令，查看此Job的详情：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">[node1 ~]$ kubectl describe jobs/pi</span><br><span class="line">Name:           pi</span><br><span class="line">Namespace:      default</span><br><span class="line">Selector:       controller-uid=c506edb4-68a4-17e8-8da4-02427d875821</span><br><span class="line">Labels:         controller-uid=c506edb4-68a4-17e8-8da4-02427d875821</span><br><span class="line">                job-name=pi</span><br><span class="line">Annotations:    kubectl.kubernetes.io/last-applied-configuration=&#123;&quot;apiVersion&quot;:&quot;batch/v1&quot;,&quot;kind&quot;:&quot;Job&quot;,&quot;metadata&quot;:&#123;&quot;annotations&quot;:&#123;&#125;,&quot;name&quot;:&quot;pi&quot;,&quot;namespace&quot;:&quot;default&quot;&#125;,&quot;spec&quot;:&#123;&quot;backoffLimit&quot;:4,&quot;template&quot;:&#123;&quot;spec&quot;:&#123;&quot;con...</span><br><span class="line">Parallelism:    1</span><br><span class="line">Completions:    1</span><br><span class="line">Start Time:     Fri, 18 May 2018 04:34:04 +0000</span><br><span class="line">Pods Statuses:  0 Running / 1 Succeeded / 0 Failed</span><br><span class="line">Pod Template:</span><br><span class="line">  Labels:  controller-uid=c506edb4-68a4-17e8-8da4-02427d875821</span><br><span class="line">           job-name=pi</span><br><span class="line">  Containers:</span><br><span class="line">   pi:</span><br><span class="line">    Image:  perl</span><br><span class="line">    Port:   &lt;none&gt;</span><br><span class="line">    Command:</span><br><span class="line">      perl</span><br><span class="line">      -Mbignum=bpi</span><br><span class="line">      -wle</span><br><span class="line">      print bpi(2)</span><br><span class="line">    Environment:  &lt;none&gt;</span><br><span class="line">    Mounts:       &lt;none&gt;</span><br><span class="line">  Volumes:        &lt;none&gt;</span><br><span class="line">Events:</span><br><span class="line">  Type    Reason            Age   From            Message</span><br><span class="line">  ----    ------            ----  ----            -------</span><br><span class="line">  Normal  SuccessfulCreate  30s    job-controller  Created pod: li-89hpr</span><br></pre></td></tr></table></figure>
+<p>查看当前正在运行的Pod：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[node1 ~]$ kubectl get pods</span><br><span class="line">NAME       READY     STATUS    RESTARTS   AGE</span><br><span class="line">li-89hpr   1/1       Running   0          35s</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Continuous Delivery is sometimes confused with Continuous Deployment. Continuous Deployment means that every change goes through the pipeline and automatically gets put into production, resulting in many production deployments every day. Continuous Delivery just means that you are able to do frequent deployments but may choose not to do it, usually due to businesses preferring a slower rate of deployment. In order to do Continuous Deployment you must be doing Continuous Delivery.</p>
+<p>如果返回No resources found，则表明这个计算π的Pod已经运行结束了，get pods命令只能返回当前正在运行的Pod，加上-a参数能够返回所有Pod以及对应的status。</p>
 </blockquote>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://martinfowler.com/articles/continuousIntegration.html" target="_blank" rel="noopener">https://martinfowler.com/articles/continuousIntegration.html</a><br><a href="https://martinfowler.com/bliki/ContinuousDelivery.html" target="_blank" rel="noopener">https://martinfowler.com/bliki/ContinuousDelivery.html</a></p>
+<h2 id="Job对象参数详解"><a href="#Job对象参数详解" class="headerlink" title="Job对象参数详解"></a>Job对象参数详解</h2><h3 id="spec-completions和-spec-parallelism"><a href="#spec-completions和-spec-parallelism" class="headerlink" title=".spec.completions和.spec.parallelism"></a>.spec.completions和.spec.parallelism</h3><p><strong>如果指定了.spec.parallelism参数，那么表示此Job可以同时运行指定.spec.parallelism数量的Pod。</strong>通常用于从消息队列中读取数据的worker程序，指定了.spec.parallelism后，那么就会同时有多个worker从消息队列中读取数据。</p>
+<blockquote>
+<p>具体的例子请参考：<a href="https://kubernetes.io/docs/tasks/job/fine-parallel-processing-work-queue/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/job/fine-parallel-processing-work-queue/</a></p>
+</blockquote>
+<p>如果指定了.spec.completions参数，<strong>那么意味着这个Job需要成功.spec.completions个Pod才会结束。</strong>因此，Job Controller会依次创建出.spec.completions数量的Pod，直到这些Pod都运行成功为止。</p>
+<p>下面是一些具体的例子：</p>
+<ul>
+<li><p>上面的li Job未设置.spec.parallelism和.spec.completions，通过describe命令我们发现默认值为：parallelism=1，completions=1。</p>
+</li>
+<li><p>如果只设置li Job <em>.spec.completions = 3</em>，那么此时.spec.parallelism参数采用默认值1，因此Job Controller会首先创建第一个Pod，运行成功后，创建第二个Pod，第二个Pod运行成功后，创建第三个Pod。</p>
+</li>
+<li><p>如果只设置li Job <em>.spec.parallelism = 3</em>，那么意味着此Job能够同时运行3个Pod。因此Job Controller会同时创建三个Pod，当三个Pod运行结束后，Job也设置为结束状态。</p>
+</li>
+<li><p>如果同时设置<em>.spec.parallelism=3</em>，.<em>spec.completions = 9</em>，那么Job Controller会每次创建3个Pod，循环3此后，当存在9个成功运行结束的Pod后，Job成功运行结束。</p>
+</li>
+</ul>
+<blockquote>
+<p>如果.spec.parallelism的值大于.spec.completions，此时不会同时创建.spec.parallelism个Pod，而是创建出.spec.completions个Pod。</p>
+</blockquote>
+<h3 id="spec-template-spec-restartPolicy"><a href="#spec-template-spec-restartPolicy" class="headerlink" title=".spec.template.spec.restartPolicy"></a>.spec.template.spec.restartPolicy</h3><p><em>.spec.template.spec.restartPolicy</em>属性拥有三个候选值：<strong>OnFailure，Never和Always。默认值为Always。</strong>它主要用于描述Pod内容器的重启策略。<strong>在Job中只能将此属性设置为OnFailure或Never。</strong></p>
+<p>如果<em>.spec.template.spec.restartPolicy = OnFailure</em>，如果Pod内某个容器的exit code不为0，那么Pod就会在其内部重启这个容器。而如果<em>.spec.template.spec.restartPolicy = Never</em>，那么Pod内某个容器exit code不为0时，就不会触发容器的重启。</p>
+<p>除了针对Pod内容器的<em>.spec.template.spec.restartPolicy</em>（此属性属于Pod的属性，本质上与Job Controller无关），Job Controller会确保Pod运行成功<em>.spec.completions</em>次。当一个Pod运行失败时（Pod所在及其宕机，Pod内某个容器运行失败那么Pod运行结束时的状态就也是失败），Job Controller会创建一个新的Pod来运行，直到运行成功的Pod个数等于<em>.spec.completions</em>。</p>
+<blockquote>
+<p>因此，我们将<em>.spec.template.spec.restartPolicy</em>设置为Never，当容器exit code不为0时，Job Controller会创建一个新的Pod来继续运行，这就像ReplicaSet一样提供了Pod的高可用性。</p>
+</blockquote>
+<h3 id="spec-backoffLimit"><a href="#spec-backoffLimit" class="headerlink" title=".spec.backoffLimit"></a>.spec.backoffLimit</h3><p><em>.spec.backoffLimit</em>用于设置Job的容错次数，默认值为6。当Job运行的Pod失败次数到达<em>.spec.backoffLimit</em>次时，Job Controller不再新建Pod，直接停止运行这个Job，将其运行结果标记为Failure。另外，Pod运行失败后再次运行的时间间隔呈递增状态，例如10s，20s，40s。。。</p>
+<h3 id="spec-activeDeadlineSeconds"><a href="#spec-activeDeadlineSeconds" class="headerlink" title=".spec.activeDeadlineSeconds"></a>.spec.activeDeadlineSeconds</h3><p><em>.spec.activeDeadlineSeconds</em>属性用于设置Job运行的超时时间。如果Job运行的时间超过了设定的秒数，那么此Job就自动停止运行所有的Pod，并将Job退出状态标记为<em>reason: DeadlineExceeded</em>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>以Bare Pod（通过描述文件直接定义运行的Pod）没有自愈性，如果机器宕机或重启了，那么运行在其上的Pod都不会重启。<strong>因此如果要单独运行一个Pod，我们推荐使用Job运行，而不是运行Bare Pod</strong>。</p>
+</li>
+<li><p>Job的高可用性与Replication Controller有些相似。但是，<strong>Replication Controller通常用于管理一些始终处于运行状态的Pod（例如web服务器）；而Job则用于管理那些一定会运行结束的Pod</strong>。</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/" target="_blank" rel="noopener">https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/</a></li>
+</ul>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
-            </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/</a>
-            </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">April 22nd 2019, 10:28:23 am</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/22/CI-CD-Concept/">April 22nd 2019, 10:29:35 am</a>
+            </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/28/Concept-of-k8s-Job/">https://wonderingkaho.github.io/2019/04/28/Concept-of-k8s-Job/</a>
+            </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/28/Concept-of-k8s-Job/">April 28th 2019, 1:46:49 pm</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/28/Concept-of-k8s-Job/">April 28th 2019, 1:48:10 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -421,17 +468,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/04/23/Kubernetes-Concept/" title="Kubernetes Concept">
-                    <div class="nextTitle">Kubernetes Concept</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2019/04/21/Docker-Container-Install-Ubuntu/" title="Docker Container Install Ubuntu">
-                    <div class="prevTitle">Docker Container Install Ubuntu</div>
+                <a href="/2019/04/26/图解Kubernetes网络（三）/" title="图解Kubernetes网络（三）">
+                    <div class="prevTitle">图解Kubernetes网络（三）</div>
                 </a>
             
         </li>
@@ -565,7 +607,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-Continuous-Integration-持续集成"><span class="toc-number">1.</span> <span class="toc-text">CI(Continuous Integration, 持续集成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CD-Continuous-Delivery-持续交付"><span class="toc-number">2.</span> <span class="toc-text">CD(Continuous Delivery, 持续交付)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#另一种CD-Continuous-Deployment-持续部署"><span class="toc-number">3.</span> <span class="toc-text">另一种CD(Continuous Deployment, 持续部署)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个Job对象"><span class="toc-number">1.</span> <span class="toc-text">创建一个Job对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Job对象参数详解"><span class="toc-number">2.</span> <span class="toc-text">Job对象参数详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spec-completions和-spec-parallelism"><span class="toc-number">2.1.</span> <span class="toc-text">.spec.completions和.spec.parallelism</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spec-template-spec-restartPolicy"><span class="toc-number">2.2.</span> <span class="toc-text">.spec.template.spec.restartPolicy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spec-backoffLimit"><span class="toc-number">2.3.</span> <span class="toc-text">.spec.backoffLimit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spec-activeDeadlineSeconds"><span class="toc-number">2.4.</span> <span class="toc-text">.spec.activeDeadlineSeconds</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
