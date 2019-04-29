@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">882</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">887</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -406,7 +406,7 @@ height:50vh;
 
                           即，第25min，45min等时刻触发
 </code></pre><p>示例：比如每隔1min执行一次任务：则Cron 表达式如下：</p>
-<p>(<strong>)<code>*/1 * * * *</code>(</strong>)</p>
+<p>(<strong>)  \ast/1 \ast \ast \ast \ast (</strong>)</p>
 <h2 id="创建一个CronJob对象"><a href="#创建一个CronJob对象" class="headerlink" title="创建一个CronJob对象"></a>创建一个CronJob对象</h2><p>在Kubernetes 1.8之前，创建一个CronJob需要使用batch/v2alpha1版本的API，而默认这个版本的API是禁用的，因此需要通过传递参数–runtime-config=batch/v2alpha1=true给API Server来启用。而在Kubernetes 1.8之后，可以直接使用API Server默认就开启的batch/v1beta1版本。下面是一个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: batch/v1beta1</span><br><span class="line">kind: CronJob</span><br><span class="line">metadata:</span><br><span class="line">  name: hello</span><br><span class="line">spec:</span><br><span class="line">  schedule: &quot;*/1 * * * *&quot;</span><br><span class="line">  jobTemplate:</span><br><span class="line">    spec:</span><br><span class="line">      template:</span><br><span class="line">        spec:</span><br><span class="line">          containers:</span><br><span class="line">          - name: hello</span><br><span class="line">            image: busybox</span><br><span class="line">            args:</span><br><span class="line">            - /bin/sh</span><br><span class="line">            - -c</span><br><span class="line">            - date; echo Hello from the Kubernetes cluster</span><br><span class="line">          restartPolicy: OnFailure</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f ./cronjob.yaml</span><br><span class="line">cronjob &quot;hello&quot; created</span><br></pre></td></tr></table></figure>
@@ -443,7 +443,7 @@ height:50vh;
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
             </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/04/29/Concept-of-k8s-ConJob/">https://wonderingkaho.github.io/2019/04/29/Concept-of-k8s-ConJob/</a>
             </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/04/29/Concept-of-k8s-ConJob/">April 29th 2019, 10:39:23 am</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/29/Concept-of-k8s-ConJob/">April 29th 2019, 10:45:18 am</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/04/29/Concept-of-k8s-ConJob/">April 29th 2019, 11:00:01 am</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -603,8 +603,6 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
     
     
     
