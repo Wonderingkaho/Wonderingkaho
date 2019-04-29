@@ -399,19 +399,14 @@ CronJob格式Minutes Hours DayofMonth Month DayofWeek Yea
             
 学习本节内容之前，希望你已经对Pod和ReplicaSet有了基本的了解。具体请参考这两篇文章：
 
-
-
 Kubernetes对象之Pod
-
-
-
-
 Kubernetes对象之ReplicaSet
 
 
 Job对象通常用于运行那些仅需要执行一次的任务（例如数据库迁移，批处理脚本等等）。通过Job对象创建运行的Pod具有高可靠性，因为Job Controller会自动重启运行失败的Pod（例如Pod所在Node重启或宕机）。
 Job的本质是确保一个或多个Pod健康地运行直至运行完毕。
-创建一个Job对象下面是创建一个Job对象的例子，这个Job对象会启动一个Pod，用于计算π到小数点后2000...
+创建一个Job对象下面是创建一个Job对象的例子，这个Job对象会启动一个Pod，用于计算π到小数点后2000位：
+123...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -898,6 +893,12 @@ Docker与虚拟机Docker守护进程可以直接与主操作系统进行通信�
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
     
     
     
