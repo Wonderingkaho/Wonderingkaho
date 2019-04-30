@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wonderingkaho.github.io/2019/04/30/Concept-of-Kubernetes-Pod/</loc>
+    
+    <lastmod>2019-04-30T02:35:37.572Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wonderingkaho.github.io/2019/04/28/Concept-of-Kubernetes-Job/</loc>
     
     <lastmod>2019-04-29T03:13:44.963Z</lastmod>
