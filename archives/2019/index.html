@@ -347,6 +347,37 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2019/05/04/Concept-of-Kubernetes-Service/">
+            
+                <span>Concept of Kubernetes Service</span>
+        </a>
+        <div class="abstract-content">
+            通过以前的学习，我们已经能够通过ReplicaSet来创建一组Pod来提供具有高可用性的服务。虽然每个Pod都会分配一个单独的Pod IP，然而却存在如下两问题：
+
+Pod IP仅仅是集群内可见的虚拟IP，外部无法访问。
+
+Pod IP会随着Pod的销毁而消失，当ReplicaSet对Pod进行动态伸缩时，Pod IP可能随时随地都会变化，这样对于我们访问这个服务带来了难度。
+
+
+因此，Kubernetes中的Service对象就是解决以上问题的核心关键。
+Service的创建Service可以看作是一组提供相同服务的Pod对外的访问接口。借助Service，应用可以方便地实现服务发现和...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/04</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2019/04/30/Concept-of-Kubernetes-Pod/">
             
                 <span>Concept of Kubernetes Pod</span>
@@ -618,75 +649,6 @@ Ubuntu下运行此命令1apt-get update
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2019/04/21/Docker-Common-Command/">
-            
-                <span>Docker Common Command</span>
-        </a>
-        <div class="abstract-content">
-            先随便找一个Docker镜像，然后拉镜像，拉完镜像就可以docker run了
-Docker 镜像常用命令
-搜索镜像：
-
-1docker search ubuntu
-docker search 命令搜索存放在 Docker Hub 中的镜像，显示的信息包括:
-
-
-
-属性头
-描述
-
-
-
-
-NAME
-镜像仓库名称
-
-
-DESCRIPTION
-镜像仓库描述
-
-
-STARS
-镜像仓库收藏数
-
-
-OFFICAL
-是否官方库
-
-
-AUTOMATED
-是否自动构建的镜像仓库
-
-
-
-
-
-下载镜像：
-
-1docker pull ubuntu
-
-列出镜像：
-
-1docker images ls
-
-显示的信息...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/04/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
@@ -897,9 +859,26 @@ AUTOMATED
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 11
+        Total : 12
         </div>
         <!-- search  -->
         
@@ -912,6 +891,11 @@ AUTOMATED
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/04</span><a class="archive-post-title" href="/2019/05/04/Concept-of-Kubernetes-Service/">Concept of Kubernetes Service</a>
+        </li>
     
     
         <li class="archive-post-item">
