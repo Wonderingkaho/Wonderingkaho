@@ -398,8 +398,7 @@ height:50vh;
     <article class="article-entry">
         <p>An experimental optical music recognition engine.<br>Moonlight reads PNG image(s) containing sheet music and outputs MusicXML or a NoteSequence message. MusicXML is a standard sheet music interchange format, and NoteSequence is used by Magenta for training generative music models.</p>
 <h2 id="Command-Line-Usage"><a href="#Command-Line-Usage" class="headerlink" title="Command-Line Usage"></a>Command-Line Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tensorflow/moonlight</span><br><span class="line">cd moonlight</span><br><span class="line"># You may want to run this inside a virtualenv.</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line"># Build the OMR command-line tool.</span><br><span class="line">bazel build moonlight:omr</span><br><span class="line"># Prints a Score message.</span><br><span class="line">bazel-bin/moonlight/omr moonlight/testdata/IMSLP00747-000.png</span><br><span class="line"># Scans several pages and prints a NoteSequence message.</span><br><span class="line">bazel-bin/moonlight/omr --output_type=NoteSequence IMSLP00001-*.png</span><br><span class="line"># Writes MusicXML to ~/mozart.xml.</span><br><span class="line">bazel-bin/moonlight/omr --output_type=MusicXML --output=$HOME/mozart.xml \</span><br><span class="line">    corpus/56/IMSLP56442-*.png</span><br></pre></td></tr></table></figure>
-<p>###While the installation, I met a problem that it throw a problem:</p>
-<p><img src="/2019/05/11/The-installation-of-Moonlight-OMR/Screenshot 2019-05-11 at 11.12.47 AM.png" alt="图片"></p>
+<h3 id="While-the-installation-I-met-a-problem-that-it-throw-a-problem"><a href="#While-the-installation-I-met-a-problem-that-it-throw-a-problem" class="headerlink" title="While the installation, I met a problem that it throw a problem:"></a>While the installation, I met a problem that it throw a problem:</h3><p><img src="/2019/05/11/The-installation-of-Moonlight-OMR/Screenshot 2019-05-11 at 11.12.47 AM.png" alt="图片"></p>
 <p><strong>I used follow steps and resolved this problem:</strong></p>
 <ol>
 <li><p>Reduced version:<br><code>pip install --upgrade --force-reinstall pip==9.0.3</code></p>
@@ -421,7 +420,7 @@ height:50vh;
             <p>原文作者：<a href="https://wonderingkaho.github.io">Dr.Lee</a>
             </p><p>原文链接：<a href="https://wonderingkaho.github.io/2019/05/11/The-installation-of-Moonlight-OMR/">https://wonderingkaho.github.io/2019/05/11/The-installation-of-Moonlight-OMR/</a>
             </p><p>发表日期：<a href="https://wonderingkaho.github.io/2019/05/11/The-installation-of-Moonlight-OMR/">May 11th 2019, 11:18:20 am</a>
-            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/05/11/The-installation-of-Moonlight-OMR/">May 11th 2019, 11:22:00 am</a>
+            </p><p>更新日期：<a href="https://wonderingkaho.github.io/2019/05/11/The-installation-of-Moonlight-OMR/">May 11th 2019, 11:24:11 am</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -568,7 +567,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Command-Line-Usage"><span class="toc-number">1.</span> <span class="toc-text">Command-Line Usage</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Command-Line-Usage"><span class="toc-number">1.</span> <span class="toc-text">Command-Line Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#While-the-installation-I-met-a-problem-that-it-throw-a-problem"><span class="toc-number">1.1.</span> <span class="toc-text">While the installation, I met a problem that it throw a problem:</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -581,6 +580,10 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
     
     
     
